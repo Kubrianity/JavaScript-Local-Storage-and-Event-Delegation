@@ -10,8 +10,9 @@ function addItem(e) {
         done: false
     }
     items.push(item);
-    this.reset();
     populateList(items, itemsList);
+    this.reset();
+    localStorage.setItem("items", JSON.stringify(items)); // save items to localStorage
 }
 function populateList(plates = [], platesList) {
     platesList.innerHTML = plates.map((plate, i) => {
