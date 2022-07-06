@@ -9,6 +9,18 @@ function addItem(e) {
         text,
         done: false
     }
-
+    items.push(item);
+    this.reset();
+    populateList(items, itemsList);
 }
-addItems.addEventListener("submit", addItem)
+function populateList(plates = [], platesList) {
+    platesList.innerHTML = plates.map((plate, i) => {
+        return `
+          <li>
+            <input type = "checkbox" data-index=${i} id="item${i}" ${plate.done ? 'checked' : ''}/>
+            <label for="item${i}">${plate.text}</label>
+          </li>
+        `;
+    }).join(""); //map returns an array, we need a string within html
+}
+addItems.addEventListener("submit", addItem);
