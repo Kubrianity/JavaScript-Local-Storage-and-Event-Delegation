@@ -1,6 +1,6 @@
 const addItems = document.querySelector('.add-items');
 const itemsList = document.querySelector('.plates');
-const items = [];
+const items = JSON.parse(localStorage.getItem("items")) || [];
 
 function addItem(e) {
     e.preventDefault(); // stop page from reloading
@@ -25,3 +25,4 @@ function populateList(plates = [], platesList) {
     }).join(""); //map returns an array, we need a string within html
 }
 addItems.addEventListener("submit", addItem);
+populateList(items, itemsList);
