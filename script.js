@@ -24,5 +24,10 @@ function populateList(plates = [], platesList) {
         `;
     }).join(""); //map returns an array, we need a string within html
 }
+function toggleDone(e) {
+  if(!e.target.matches("input")) return; // skip this unless it's an input
+  const index = e.target.dataset.index;
+  }
 addItems.addEventListener("submit", addItem);
+itemsList.addEventListener("click", toggleDone);
 populateList(items, itemsList);
